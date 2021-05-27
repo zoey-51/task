@@ -1,0 +1,163 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>日记框</title>
+
+<script src="/javascripts/"></script>
+<script src="/modernizr2.js"></script>
+
+<script>
+$(document).ready(function(){
+
+if(!Modernizr.input.placeholder){
+
+	$('[placeholder]').focus(function() {
+	  var input = $(this);
+	  if (input.val() == input.attr('placeholder')) {
+		input.val('');
+		input.removeClass('placeholder');
+	  }
+	}).blur(function() {
+	  var input = $(this);
+	  if (input.val() == '' || input.val() == input.attr('placeholder')) {
+		input.addClass('placeholder');
+		input.val(input.attr('placeholder'));
+	  }
+	}).blur();
+	$('[placeholder]').parents('form').submit(function() {
+	  $(this).find('[placeholder]').each(function() {
+		var input = $(this);
+		if (input.val() == input.attr('placeholder')) {
+		  input.val('');
+		}
+	  })
+	});
+
+}
+
+});
+</script>
+
+<style>
+body {
+	font: 90%/150% Arial, Helvetica, sans-serif;
+	color: #666;
+	width: 700px;
+	margin: 30px auto;
+}
+a {
+	color: #000;
+	text-decoration: none;
+}
+a:hover {
+	color: #F60;
+}
+p {
+	margin: 0 0 2em;
+}
+h1, h2, h3 {
+	line-height: 110%;
+}
+h1 {
+	font: bold 80% Arial, Helvetica, sans-serif;
+	text-transform: uppercase;
+	margin: 0 0 2px;
+	color: #999;
+}
+h2 {
+	margin: 0 0 8px;
+}
+h3 {
+	border-top: solid 2px #ccc;
+	margin: 40px 0 15px;
+	padding-top: 10px;
+}
+.credits {
+	color: #999;
+	font: italic 90% "Times New Roman", Times, serif;
+}
+.credits a {
+	color: #666;
+}
+
+form p {
+	margin: 0 0 15px;
+}
+
+/************************************************************************************
+FORM STYLE BEGIN
+*************************************************************************************/
+
+/* input styles */
+input, 
+textarea, 
+input[type=search] {
+	background: #f4f4f4;
+	border: solid 1px #a3a3a3;
+	padding: 5px 10px;
+	font: 15px "Times New Roman", Times, serif;
+	-webkit-box-shadow: inset 0 2px 3px rgba(0,0,0,.1);
+	-moz-box-shadow: inset 0 2px 3px rgba(0,0,0,.1);
+	box-shadow: inset 0 2px 3px rgba(0,0,0,.1);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-appearance: none; /* reset webkit search style */
+}
+
+/* input:focus styles */
+input[type=text]:focus, 
+textarea:focus,
+input[type=search]:focus {
+	background: #fff;
+	border-color: #333;
+	outline: none; /* remove outline */
+}
+
+/* set field width */
+input[type=text], input[type="search"] {
+	width: 200px;
+}
+textarea {
+	width: 400px;
+	height: 250px;
+}
+
+/* fallback placeholder */
+.placeholder {
+	color: #bbb;
+}
+/* webkit placeholder */
+::-webkit-input-placeholder {
+	color: #bbb;
+}
+/* moz placeholder */
+:-moz-placeholder {
+	color: #bbb;
+}
+
+/* remove webkit search input decoration and cancel button */
+input[type="search"]::-webkit-search-decoration, 
+input[type="search"]::-webkit-search-cancel-button {
+	display: none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>胶囊日记</h1>
+<form class="form" action="/login" method="POST" >
+	<p><input type="text" placeholder="日记名称"></p>
+	<p><input type="text" placeholder="今日天气"></p>
+	<p><input type="text" placeholder="时间"></p>
+	<p><textarea placeholder="写写你现在所想的吧~"></textarea></p>
+	<input type="submit" value="提交日志">
+</form>
+
+
+</body>
+</html>
