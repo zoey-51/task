@@ -5,11 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var ejs =require('ejs');
 var session = require('express-session');
-<<<<<<< HEAD
 var back = require("./routes/back");
 var input = require("./routes/input");
-=======
->>>>>>> 3bf3e62b3224605a7e6cd720972e54f5237ba73d
+
 
 
 
@@ -29,19 +27,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
-  secret:'wylla',
+  secret:'secret',
   cookie:{maxAge:80000},
-  resave:false,
-  saveUninitialized:true
+  resave:true,
+  saveUninitialized:false
 }));
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-<<<<<<< HEAD
 app.use('/back',back);
 app.use('/input',input)
-=======
->>>>>>> 3bf3e62b3224605a7e6cd720972e54f5237ba73d
+
 
 
 // catch 404 and forward to error handler

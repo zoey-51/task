@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -144,20 +144,30 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 </style>
-
+<script src="/javascripts/jquery-1.2.4.js"></script>
 </head>
-
+ 
 <body>
 
-<h1>胶囊日记</h1>
-<form class="form" action="/input/add" method="POST" >
-	<p><input type="text" name="t" placeholder="日记名称"></p>
-	<p><input type="text" name="w" placeholder="今日天气"></p>
-	<p><input type="text" name="d" placeholder="时间"></p>
-	<p><input type="text" name="x" placeholder="写写你现在所想的吧~"></input></p>
-	<input type="submit" value="提交日志">
-</form>
+<h1>日志列表</h1>
+<p>
+<%date.forEach(i => {%>
+	<p><div class="title" data-id="<%= i.article_id%>"><%= i.article_title%><div></p>
+	<%})%>
+	</p>
+    <button onclick="loc()">返回主页面</button>
+<script>
+		Array.from(document.getElementsByClassName("title")).forEach(i => {
+			i.onclick = ()=>{
+				let id = i.getAttribute("data-id")
+				window.location.href="/input/"+id
+			}
+		})//通过该日志在数据库的id找到该日志
 
+		function loc(){
+			window.location.href="/index"
+		}
+</script>
 
 </body>
 </html>

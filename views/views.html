@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -150,14 +150,14 @@ input[type="search"]::-webkit-search-cancel-button {
 <body>
 
 <h1>胶囊日记</h1>
-<form class="form" action="/input/add" method="POST" >
-	<p><input type="text" name="t" placeholder="日记名称"></p>
-	<p><input type="text" name="w" placeholder="今日天气"></p>
-	<p><input type="text" name="d" placeholder="时间"></p>
-	<p><input type="text" name="x" placeholder="写写你现在所想的吧~"></input></p>
-	<input type="submit" value="提交日志">
+<form class="form" action="/list3" method="GET" >
+	<p><input type="text" value="<%= data.article_title%>" placeholder="日记名称"></p>
+	<p><input type="text" value="<%= data.article_weather%>" placeholder="今日天气"></p>
+	<p><input type="text" value="<%= data.article_date%>" placeholder="时间"></p>
+	<p><input  value="<%= data.article_content%>" placeholder="写写你现在所想的吧~"></input></p>
+	<input type="submit" value="返回日志列表">
 </form>
 
-
+<!-- 通过后端的数据进行渲染 -->
 </body>
 </html>
